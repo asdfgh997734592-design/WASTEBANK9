@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07130f">
+<title>WASTEBANK GLOBAL</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#07130f;color:#f2fff7;font-family:Arial,sans-serif}
+header{padding:22px;background:#10271b;border-bottom:1px solid #b99a43}
+h1{color:#68edaa;letter-spacing:2px;margin:0}
+header p{color:#e9c66b;margin-bottom:0}
+main{max-width:800px;margin:auto;padding:18px}
+.hero{padding:28px 20px;border-radius:20px;background:linear-gradient(135deg,#174b31,#101c16);border:1px solid #b99a43}
+.hero h2{font-size:32px;color:#e9c66b}
+button{background:#65e6a1;color:#07130f;border:0;padding:13px 17px;border-radius:10px;font-weight:bold;cursor:pointer}
+nav{display:flex;gap:8px;overflow:auto;margin:18px 0}
+nav button{white-space:nowrap}
+nav button.active{background:#e9c66b}
+.card{background:#10231b;border:1px solid #31543e;border-radius:15px;padding:17px;margin:12px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat strong{display:block;font-size:26px;color:#65e6a1;margin-top:8px}
+label{display:block;margin:13px 0 6px;color:#e9c66b}
+input,select,textarea{width:100%;padding:12px;background:#07130f;color:white;border:1px solid #496a53;border-radius:9px}
+textarea{min-height:70px}
+.page{display:none}
+.page.active{display:block}
+.action{width:100%;margin-top:14px}
+small{color:#a9c2b0}
+footer{text-align:center;color:#e9c66b;padding:25px}
+</style>
+</head>
+<body>
+<header>
+<h1>♻ WASTEBANK GLOBAL</h1>
+<p>TURN WASTE INTO VALUE</p>
+</header>
+
+<main>
+<section class="page active" id="home">
+<div class="hero">
+<h2>One Planet. One Mission.</h2>
+<p>Connecting plastic waste to a sustainable future.</p>
+<button onclick="show('pickup')">REQUEST PLASTIC PICKUP</button>
+</div>
+
+<div class="stats">
+<div class="card">Plastic collected<strong id="total">0 kg</strong></div>
+<div class="card">Pickup requests<strong id="count">0</strong></div>
+</div>
+
+<div class="card">
+<h3>Our global mission 🌍</h3>
+<p>Collect. Sort. Recycle. Repeat.</p>
+<small>Every kilogram counts.</small>
+</div>
+</section>
+
+<section class="page" id="pickup">
+<div class="card">
+<h2>Request Plastic Pickup</h2>
+<form id="pickupForm">
+<label>Name / Business</label>
+<input name="name" required>
+<label>Phone number</label>
+<input name="phone" required>
+<label>Area</label>
+<input name="area" required>
+<label>Plastic type</label>
+<select name="type">
+<option>PET bottles</option>
+<option>HDPE</option>
+<option>LDPE</option>
+<option>PP</option>
+<option>Mixed plastic</option>
+</select>
+<label>Estimated quantity (kg)</label>
+<input name="kg" type="number" min="1" required>
+<button class="action">SUBMIT REQUEST</button>
+</form>
+</div>
+</section>
+
+<section class="page" id="records">
+<div class="card">
+<h2>Collection Records</h2>
+<form id="recordForm">
+<label>Supplier name</label>
+<input name="supplier" required>
+<label>Plastic type</label>
+<select name="type">
+<option>PET</option><option>HDPE</option>
+<option>LDPE</option><option>PP</option>
+<option>Mixed</option>
+</select>
+<label>Weight (kg)</label>
+<input name="kg" type="number" min="0.1" step="0.1" required>
+<button class="action">SAVE RECORD</button>
+</form>
+</div>
+<div id="recordsList"></div>
+</section>
+
+<section class="page" id="network">
+<div class="card">
+<h2>Our Network</h2>
+<form id="networkForm">
+<label>Business / Person</label>
+<input name="name" required>
+<label>Role</label>
+<select name="role">
+<option>Plastic supplier</option>
+<option>Waste collector</option>
+<option>Recycling buyer</option>
+<option>Transport partner</option>
+</select>
+<label>Phone</label>
+<input name="phone">
+<button class="action">ADD CONTACT</button>
+</form>
+</div>
+<div id="contacts"></div>
+</section>
+
+<section class="page" id="impact">
+<div class="card">
+<h2>Environmental Impact 🌱</h2>
+<h3>Plastic collected</h3>
+<strong id="impactTotal" style="font-size:30px;color:#65e6a1">0 kg</strong>
+<p>These figures reflect manually recorded collections, not independently verified recycling.</p>
+</div>
+</section>
+
+<nav>
+<button class="active" onclick="show('home',this)">HOME</button>
+<button onclick="show('pickup',this)">PICKUP</button>
+<button onclick="show('records',this)">RECORDS</button>
+<button onclick="show('network',this)">NETWORK</button>
+<button onclick="show('impact',this)">IMPACT</button>
+</nav>
+<footer>WASTEBANK GLOBAL © 2026</footer>
+</main>
+
+<script>
+const read=k=>JSON.parse(localStorage.getItem(k)||'[]');
+const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+
+function show(id,btn){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+if(btn)btn.classList.add('active');
+render();
+}
+
+document.getElementById('pickupForm').onsubmit=e=>{
+e.preventDefault();
+let a=read('wb_pickups');
+a.push(Object.fromEntries(new FormData(e.target)));
+save('wb_pickups',a);
+e.target.reset();
+alert('Pickup request saved on this device!');
+render();
+};
+
+document.getElementById('recordForm').onsubmit=e=>{
+e.preventDefault();
+let a=read('wb_records');
+a.push(Object.fromEntries(new FormData(e.target)));
+save('wb_records',a);
+e.target.reset();
+alert('Collection recorded!');
+render();
+};
+
+document.getElementById('networkForm').onsubmit=e=>{
+e.preventDefault();
+let a=read('wb_contacts');
+a.push(Object.fromEntries(new FormData(e.target)));
+save('wb_contacts',a);
+e.target.reset();
+alert('Contact saved!');
+render();
+};
+
+function render(){
+let records=read('wb_records');
+let total=records.reduce((s,r)=>s+Number(r.kg),0);
+document.getElementById('total').textContent=total+' kg';
+document.getElementById('impactTotal').textContent=total+' kg';
+document.getElementById('count').textContent=read('wb_pickups').length;
+document.getElementById('recordsList').innerHTML=records.map(r=>
+'<div class="card">'+r.supplier+' — '+r.type+' — '+r.kg+' kg</div>').join('');
+document.getElementById('contacts').innerHTML=read('wb_contacts').map(c=>
+'<div class="card">'+c.name+' — '+c.role+' — '+c.phone+'</div>').join('');
+}
+render();
+</script>
+</body>
+  </html>
+  
