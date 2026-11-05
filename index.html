@@ -136,41 +136,29 @@ footer{text-align:center;padding:25px;color:#9eb6a5;background:#06100b}
   <form id="wasteForm2"
 </section>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
   const form = document.getElementById("wasteForm");
-
-  if (!form) {
-    console.error("Registration form not found");
-    return;
-  }
+  if (!form) return;
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const data = Object.fromEntries(
-      new FormData(form).entries()
-    );
+    const data = Object.fromEntries(new FormData(form).entries());
 
     const message =
-      "♻️ WASTEBANK GLOBAL REGISTRATION\n\n" +
+      "WASTEBANK GLOBAL REGISTRATION\n\n" +
       "Name: " + data.name + "\n" +
       "Phone: " + data.phone + "\n" +
       "Location: " + data.location + "\n" +
       "Plastic: " + data.plastic + "\n" +
       "Quantity: " + data.quantity + " kg";
 
-    const whatsappURL =
+    window.location.href =
       "https://wa.me/918897458901?text=" +
       encodeURIComponent(message);
-
-    window.location.href = whatsappURL;
   });
-
 });
 </script>
-
 </body>
 </html>
