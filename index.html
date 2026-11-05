@@ -101,4 +101,53 @@ footer{text-align:center;padding:25px;color:#9eb6a5;background:#06100b}
 <p>© 2026 WASTEBANK GLOBAL</p>
 </footer>
 </body>
+  
+<section id="register" style="padding:40px 20px;background:#10261a;color:white;text-align:center;">
+  <h2>♻️ Register Your Waste</h2>
+  <p>Turn your recyclable plastic into value.</p>
+
+  <form id="wasteForm" style="max-width:450px;margin:25px auto;display:grid;gap:14px;">
+
+    <input name="name" placeholder="Your full name" required
+    style="padding:14px;border-radius:10px;border:0;">
+
+    <input name="phone" type="tel" placeholder="Mobile number" required
+    style="padding:14px;border-radius:10px;border:0;">
+
+    <input name="location" placeholder="Your area / city" required
+    style="padding:14px;border-radius:10px;border:0;">
+
+    <select name="plastic" required style="padding:14px;border-radius:10px;">
+      <option value="">Select plastic type</option>
+      <option>PET bottles</option>
+      <option>HDPE containers</option>
+      <option>Plastic bags</option>
+      <option>Mixed plastic</option>
+      <option>Other</option>
+    </select>
+
+    <input name="quantity" type="number" min="1" placeholder="Estimated quantity (kg)" required
+    style="padding:14px;border-radius:10px;border:0;">
+
+    <button type="submit" style="padding:15px;background:#00dc75;color:#07130e;border:0;border-radius:30px;font-weight:bold;">
+      SUBMIT REGISTRATION
+    </button>
+
+    <p id="formMessage"></p>
+  </form>
+</section>
+
+<script>
+document.getElementById("wasteForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this).entries());
+  const registrations = JSON.parse(localStorage.getItem("wastebank_registrations") || "[]");
+  registrations.push({...data, date:new Date().toISOString()});
+  localStorage.setItem("wastebank_registrations", JSON.stringify(registrations));
+  document.getElementById("formMessage").textContent =
+    "Registration saved on this device! Thank you for joining WASTEBANK GLOBAL.";
+  this.reset();
+});
+</script>
+
 </html>
