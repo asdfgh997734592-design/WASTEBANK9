@@ -1,165 +1,104 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WASTEBANK GLOBAL | Nature Reimagined</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WASTEBANK GLOBAL | Waste Has Value</title>
 <style>
-:root{
---green:#087F46;
---forest:#123D2A;
---orange:#FF7628;
---yellow:#FFD447;
---leaf:#A7D96C;
---cream:#F5F0DF;
-}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:var(--forest);color:var(--cream)}
-header{
-display:flex;justify-content:space-between;align-items:center;
-flex-wrap:wrap;gap:15px;padding:20px 6%;
-background:#092c1e;border-bottom:2px solid var(--green);
-}
-.logo{font-size:20px;font-weight:900;color:var(--yellow)}
-nav a{color:white;text-decoration:none;margin:8px;font-size:13px}
-.hero{
-min-height:85vh;display:flex;flex-direction:column;
-justify-content:center;align-items:center;text-align:center;
-padding:60px 20px;
-background:linear-gradient(#071d17a8,#071d17d9),
-url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1600')
-center/cover;
-}
-.earth{font-size:85px;animation:float 4s infinite ease-in-out}
-@keyframes float{50%{transform:translateY(-15px)}}
-h1{font-size:clamp(42px,9vw,85px);color:var(--yellow);line-height:1.05}
-.hero p{max-width:650px;line-height:1.8;margin:25px auto;color:white;font-size:17px}
-.btn{
-display:inline-block;padding:15px 25px;background:var(--orange);
-color:#172719;font-weight:bold;border-radius:30px;
-text-decoration:none;margin:8px;border:0;cursor:pointer;
-}
-.btn:hover{background:var(--yellow)}
-section{padding:75px 7%;text-align:center}
-h2{font-size:clamp(28px,5vw,44px);color:var(--yellow)}
-.line{width:100px;height:5px;background:var(--orange);margin:18px auto 35px;border-radius:10px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:35px}
-.card{padding:30px 22px;border-radius:20px;background:#1c5638;border:1px solid #a7d96c55;transition:.3s}
-.card:hover{transform:translateY(-8px);border-color:var(--yellow)}
-.icon{font-size:48px;margin-bottom:15px}
-.card h3{color:var(--leaf);margin-bottom:12px}
-.card p{line-height:1.7;color:var(--cream);font-size:14px}
-.mission{background:#0d3021}
-.services{background:#123d2a}
-.process{background:#204b32}
-.join{background:linear-gradient(135deg,#164b32,#422d1d)}
-form{max-width:480px;margin:25px auto}
-input,select,textarea{
-width:100%;padding:15px;margin:8px 0;border-radius:10px;
-border:1px solid var(--leaf);background:#092c1e;color:white;font-size:15px;
-}
-input::placeholder,textarea::placeholder{color:#c4d6c7}
-footer{padding:35px;text-align:center;background:#071b12;line-height:2}
-footer strong{color:var(--yellow)}
-@media(max-width:600px){header{justify-content:center}nav{text-align:center}}
+body{font-family:Arial,sans-serif;background:#07130e;color:white;line-height:1.6}
+header{padding:20px;background:#0d2118;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:900;background:linear-gradient(90deg,red,orange,yellow,green,blue,indigo,violet);background-clip:text;color:transparent}
+nav a{color:white;text-decoration:none;margin:8px;font-size:14px}
+.hero{text-align:center;padding:85px 20px;background:linear-gradient(135deg,#063d25,#07130e,#241044)}
+.hero h1{font-size:clamp(38px,8vw,65px);font-weight:900;line-height:1.1}
+.rainbow{background:linear-gradient(90deg,#ff3333,#ff9d00,#ffe600,#00d66b,#00cfff,#7655ff,#d64cff);background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:22px auto;color:#d5e9dd;font-size:18px}
+.btn{display:inline-block;background:linear-gradient(90deg,#00c96b,#d7e900);color:#07130e;padding:14px 25px;border-radius:30px;text-decoration:none;font-weight:bold;margin-top:15px}
+section{padding:60px 20px;max-width:1100px;margin:auto}
+h2{text-align:center;font-size:32px;margin-bottom:25px}
+.intro{text-align:center;color:#c6d8cc;max-width:750px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:30px}
+.card{background:#12271d;border:1px solid #28553b;border-radius:16px;padding:25px;text-align:center}
+.card .emoji{font-size:42px}
+.card h3{margin:12px 0;color:#67f5a0}
+.card p{color:#c5d5ca}
+.mission{background:linear-gradient(120deg,#172c20,#17203b);border-radius:20px;padding:35px;text-align:center}
+.mission p{color:#d2e3d7}
+.contact{text-align:center;background:#10261a;border-radius:20px;padding:35px}
+footer{text-align:center;padding:25px;color:#9eb6a5;background:#06100b}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">🌍 WASTEBANK GLOBAL</div>
+<div class="logo">♻ WASTEBANK GLOBAL</div>
 <nav>
-<a href="#home">HOME</a>
-<a href="#mission">MISSION</a>
-<a href="#services">SERVICES</a>
-<a href="#join">JOIN US</a>
+<a href="#about">About</a>
+<a href="#mission">Mission</a>
+<a href="#work">Our Work</a>
+<a href="#contact">Contact</a>
 </nav>
 </header>
 
-<section class="hero" id="home">
-<div class="earth">🌎</div>
-<h1>NATURE<br>REIMAGINED.</h1>
-<p>From waste to wealth. From pollution to possibility.
-Building a greener world through responsible recycling
-and a powerful global community.</p>
-<a class="btn" href="#join">JOIN THE MOVEMENT 🌱</a>
-<a class="btn" href="#services">EXPLORE OUR MISSION</a>
+<div class="hero">
+<h1>WASTE HAS <span class="rainbow">VALUE.</span></h1>
+<p>Turning plastic waste into opportunities. Building a cleaner, greener and more sustainable world.</p>
+<a class="btn" href="#mission">JOIN THE MOVEMENT 🌍</a>
+</div>
+
+<section id="about">
+<h2>Welcome to <span class="rainbow">WASTEBANK GLOBAL</span></h2>
+<p class="intro">We believe waste is not the end of a product's life. It is the beginning of a new opportunity. Our mission is to connect communities, collectors and recycling partners to create a circular economy.</p>
 </section>
 
-<section class="mission" id="mission">
-<h2>ONE PLANET. ONE MISSION.</h2>
-<div class="line"></div>
-<p>A new generation of environmental action starts with us.</p>
+<section id="work">
+<h2>What We Do</h2>
 <div class="cards">
-<div class="card"><div class="icon">🌳</div><h3>Restore Nature</h3><p>Protect green spaces and support a cleaner planet.</p></div>
-<div class="card"><div class="icon">🌊</div><h3>Protect Oceans</h3><p>Reduce plastic pollution and protect aquatic ecosystems.</p></div>
-<div class="card"><div class="icon">☀️</div><h3>Power Change</h3><p>Make sustainability a daily habit for every community.</p></div>
+<div class="card">
+<div class="emoji">♻️</div>
+<h3>Plastic Collection</h3>
+<p>Encouraging communities to collect and separate recyclable plastic.</p>
+</div>
+<div class="card">
+<div class="emoji">🏦</div>
+<h3>Waste Bank</h3>
+<p>Building a network where recyclable waste can become a valuable resource.</p>
+</div>
+<div class="card">
+<div class="emoji">🌱</div>
+<h3>Green Future</h3>
+<p>Supporting responsible recycling and reducing environmental pollution.</p>
+</div>
+<div class="card">
+<div class="emoji">🌍</div>
+<h3>Global Network</h3>
+<p>Connecting people and recycling partners for a cleaner planet.</p>
+</div>
 </div>
 </section>
 
-<section class="services" id="services">
-<h2>THE WASTE REVOLUTION</h2>
-<div class="line"></div>
-<div class="cards">
-<div class="card"><div class="icon">♻️</div><h3>Plastic Collection</h3><p>Connect recyclable plastic with recovery networks.</p></div>
-<div class="card"><div class="icon">🏭</div><h3>Supplier Network</h3><p>Connect waste suppliers with recycling partners.</p></div>
-<div class="card"><div class="icon">🚛</div><h3>Pickup Requests</h3><p>Build convenient waste collection services.</p></div>
-<div class="card"><div class="icon">🌱</div><h3>Circular Economy</h3><p>Give recyclable materials a valuable second life.</p></div>
+<section id="mission">
+<div class="mission">
+<h2>OUR GLOBAL MISSION 🌎</h2>
+<p>Start locally. Grow globally. Make every piece of recyclable waste count.</p>
+<p><strong>Our starting point: Hyderabad, India.</strong></p>
+<a class="btn" href="#contact">BECOME A PARTNER</a>
 </div>
 </section>
 
-<section class="process">
-<h2>HOW WE CREATE CHANGE</h2>
-<div class="line"></div>
-<div class="cards">
-<div class="card"><h3>01 · COLLECT</h3><p>Gather recyclable materials locally.</p></div>
-<div class="card"><h3>02 · SORT</h3><p>Identify and separate reusable materials.</p></div>
-<div class="card"><h3>03 · RECYCLE</h3><p>Connect materials to responsible recyclers.</p></div>
+<section id="contact">
+<div class="contact">
+<h2>Let's Build a Cleaner World</h2>
+<p>Are you a waste collector, recycling company, business or volunteer?</p>
+<p>Connect with WASTEBANK GLOBAL and become part of the movement.</p>
+<a class="btn" href="mailto:contact@wastebankglobal.com">CONTACT US</a>
 </div>
-</section>
-
-<section class="join" id="join">
-<h2>JOIN OUR GREEN NETWORK</h2>
-<div class="line"></div>
-<p>Become a supplier, recycling partner or volunteer.</p>
-<form id="joinForm">
-<input id="name" placeholder="Your full name" required>
-<input id="phone" type="tel" placeholder="Mobile number" required>
-<select id="role" required>
-<option value="">Select your role</option>
-<option>Waste Supplier</option>
-<option>Recycling Partner</option>
-<option>Collection Partner</option>
-<option>Volunteer</option>
-</select>
-<textarea id="message" placeholder="Tell us about your interest"></textarea>
-<button class="btn" type="submit">CONNECT WITH US 🌍</button>
-</form>
-<p id="status" aria-live="polite"></p>
 </section>
 
 <footer>
-<strong>🌍 WASTEBANK GLOBAL</strong>
-<p>TURN WASTE INTO WEALTH.</p>
-<p>ONE PLANET. ONE FUTURE.</p>
+<p>♻ WASTEBANK GLOBAL</p>
+<p>Waste Has Value | Building a Sustainable Future</p>
 <p>© 2026 WASTEBANK GLOBAL</p>
 </footer>
-
-<script>
-document.getElementById("joinForm").addEventListener("submit",function(e){
-e.preventDefault();
-const name=document.getElementById("name").value.trim();
-const phone=document.getElementById("phone").value.trim();
-const role=document.getElementById("role").value;
-const message=document.getElementById("message").value.trim();
-const text=`WASTEBANK GLOBAL REGISTRATION
-Name: ${name}
-Phone: ${phone}
-Role: ${role}
-Message: ${message}`;
-window.location.href="https://wa.me/918897458901?text="+encodeURIComponent(text);
-});
-</script>
 </body>
 </html>
